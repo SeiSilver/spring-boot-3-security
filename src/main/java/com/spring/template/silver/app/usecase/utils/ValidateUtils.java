@@ -1,15 +1,15 @@
 package com.spring.template.silver.app.usecase.utils;
 
 import com.spring.template.silver.app.usecase.constraint.ValidationRegexpPattern;
-import com.spring.template.silver.app.usecase.exception.error.ErrorMessage;
 import com.spring.template.silver.app.usecase.exception.ApplicationException;
 import com.spring.template.silver.app.usecase.exception.MissingRequireFieldException;
+import com.spring.template.silver.app.usecase.exception.error.ErrorMessage;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validator;
 import java.util.List;
 import java.util.Set;
 
@@ -25,11 +25,11 @@ public class ValidateUtils {
     Set<ConstraintViolation<T>> violations = validator.validate(requestPayload);
     if (!violations.isEmpty()) {
       log.error("invalid payload with violations " + violations.stream()
-          .map(violation -> violation.getPropertyPath() + " " + violation.getMessage())
-          .toList());
+        .map(violation -> violation.getPropertyPath() + " " + violation.getMessage())
+        .toList());
       List<String> listErrorMessage = violations.stream()
-          .map(violation -> violation.getPropertyPath().toString())
-          .toList();
+        .map(violation -> violation.getPropertyPath().toString())
+        .toList();
       String errorMessage = REQUIRED_FIELD_ERROR_MESSAGE + String.join(", ", listErrorMessage);
       throw new MissingRequireFieldException(errorMessage);
     }

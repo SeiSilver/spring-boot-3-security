@@ -1,17 +1,17 @@
 package com.spring.template.silver.app.infrastructure.jpa.impl;
 
+import com.spring.template.silver.app.infrastructure.dto.UserUpdateRequest;
 import com.spring.template.silver.app.infrastructure.entity.AccountEntity;
 import com.spring.template.silver.app.infrastructure.jpa.AccountCustomRepository;
-import com.spring.template.silver.app.infrastructure.dto.UserUpdateRequest;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaUpdate;
+import jakarta.persistence.criteria.Root;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
-import javax.persistence.EntityManager;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaUpdate;
-import javax.persistence.criteria.Root;
 import java.time.ZonedDateTime;
 
 @Repository
@@ -27,7 +27,7 @@ public class AccountCustomRepositoryImpl implements AccountCustomRepository {
 
     CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
     CriteriaUpdate<AccountEntity> criteriaUpdate = criteriaBuilder
-        .createCriteriaUpdate(AccountEntity.class);
+      .createCriteriaUpdate(AccountEntity.class);
     Root<AccountEntity> root = criteriaUpdate.from(AccountEntity.class);
 
     if (StringUtils.hasText(dto.getFullName())) {
