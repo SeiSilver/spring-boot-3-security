@@ -28,9 +28,9 @@ public class CustomExceptionHandler {
   private ErrorDetail handleRequestParameterExceptions(MissingServletRequestParameterException ex) {
     log.error(FOUND_AN_ERROR, ex.getMessage(), ex);
     return ErrorDetail
-        .builder()
-        .errorMessage(ex.getMessage())
-        .build();
+      .builder()
+      .errorMessage(ex.getMessage())
+      .build();
   }
 
   @ExceptionHandler(value = {DataNotFoundException.class})

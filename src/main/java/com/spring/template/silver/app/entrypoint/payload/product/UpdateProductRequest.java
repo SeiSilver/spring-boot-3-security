@@ -1,6 +1,5 @@
 package com.spring.template.silver.app.entrypoint.payload.product;
 
-import com.spring.template.silver.app.infrastructure.entity.CategoryEntity;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,6 +23,6 @@ public class UpdateProductRequest {
 
   private Integer price;
 
-  private CategoryEntity category;
+  private Integer categoryId;
 
 }

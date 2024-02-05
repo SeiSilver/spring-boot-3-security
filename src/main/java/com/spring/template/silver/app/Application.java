@@ -1,6 +1,5 @@
 package com.spring.template.silver.app;
 
-import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.boot.SpringApplication;
@@ -19,7 +18,6 @@ import java.util.Optional;
   dateTimeProviderRef = "auditingDateTimeProvider"
 )
 @ConfigurationPropertiesScan({"com.spring.template.silver.app.usecase.config"})
-@AllArgsConstructor
 public class Application {
 
   public static void main(String[] args) {

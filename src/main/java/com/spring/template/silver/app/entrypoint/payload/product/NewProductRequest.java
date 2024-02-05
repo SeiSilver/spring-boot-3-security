@@ -1,15 +1,17 @@
 package com.spring.template.silver.app.entrypoint.payload.product;
 
-import com.spring.template.silver.app.infrastructure.entity.CategoryEntity;
-import lombok.*;
-
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class NewProductRequest {
 
   @NotNull
@@ -21,6 +23,6 @@ public class NewProductRequest {
   @NotNull
   private Integer price;
 
-  private CategoryEntity category;
+  private Integer categoryId;
 
 }
